@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+
+  --color-cyber-bg: #030514;
+  --color-cyber-surface: rgba(10, 15, 36, 0.6);
+  --color-cyber-border: rgba(0, 255, 255, 0.2);
+  --color-cyan-glow: #00f0ff;
+  --color-purple-glow: #bd00ff;
+  --color-red-glow: #ff003c;
+  --color-green-glow: #00ff66;
+
+  --font-sans: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  
+  --animate-radar: radar-scan 4s linear infinite;
+}
+
+@layer utilities {
+  .glass-panel {
+    background: var(--color-cyber-surface);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--color-cyber-border);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  }
+  
+  .glass-panel-active {
+    border-color: var(--color-cyan-glow);
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.2), inset 0 0 10px rgba(0, 240, 255, 0.1);
+  }
+
+  .text-glow-cyan {
+    text-shadow: 0 0 8px var(--color-cyan-glow);
+  }
+  .text-glow-red {
+    text-shadow: 0 0 8px var(--color-red-glow);
+  }
+  
+  .cyber-grid {
+    background-size: 40px 40px;
+    background-image: 
+      linear-gradient(to right, rgba(0, 255, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 255, 255, 0.05) 1px, transparent 1px);
+  }
+}
+
+@keyframes radar-scan {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+body {
+  background-color: var(--color-cyber-bg);
+  color: #fff;
+  overflow: hidden; /* App is a full screen dashboard */
+}
